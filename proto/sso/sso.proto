@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "modelscanmarket.sso.v1;ssov1";
+
+service Auth {
+    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Logout (LogoutRequest) returns (LogoutResponse);
+    rpc AdminCheck (AdminCheckRequest) returns (AdminCheckResponse);
+}
+
+message RegisterRequest {
+    string fname = 1;
+    string sname = 2;
+    string email = 3;
+    string password = 4; 
+}
+
+message RegisterResponse {
+    string uuid = 1;
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string token = 1;
+}
+
+message LogoutRequest {
+    string token = 1;
+}
+
+message LogoutResponse {
+    bool success = 1;
+}
+
+message AdminCheckRequest {
+    string user_uid  = 1;
+}
+
+message AdminCheckResponse {
+    bool is_admin = 1;
+}
