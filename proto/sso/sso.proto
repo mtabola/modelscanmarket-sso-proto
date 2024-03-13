@@ -25,6 +25,7 @@ message RegisterResponse {
 message LoginRequest {
     string email = 1;
     string password = 2;
+    string service_uid = 3;
 }
 
 message LoginResponse {
